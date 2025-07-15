@@ -417,7 +417,7 @@ void OptionParser::print_help() const {
 
 void OptionParser::set_usage(const string& u) {
   string lower = u;
-  transform(lower.begin(), lower.end(), lower.begin(), [](unsigned char c){ return std::tolower(c); });
+  transform(lower.begin(), lower.end(), lower.begin(), [](char c){ return static_cast<char>(std::tolower(c)); });
   if (lower.compare(0, 7, "usage: ") == 0)
     _usage = u.substr(7);
   else
