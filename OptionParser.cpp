@@ -515,7 +515,7 @@ string Option::format_option_help(unsigned int indent /* = 2 */) const {
     string mvar = metavar();
     if (mvar == "") {
       mvar = dest();
-      transform(mvar.begin(), mvar.end(), mvar.begin(), ::toupper);
+      transform(mvar.begin(), mvar.end(), mvar.begin(), [](char c){ return static_cast<char>(std::toupper(c)); });
      }
     mvar_short = " " + mvar;
     mvar_long = "=" + mvar;
